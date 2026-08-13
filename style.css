@@ -1,4 +1,4 @@
-    * {
+* {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -52,7 +52,6 @@
         
     }
 
-    /* Nova classe criada no HTML para a logo esticar de ponta a ponta */
     .logo-topo {
         width: 100%;       
         height: auto;       
@@ -62,20 +61,21 @@
         object-position: center;
     }
 
-    /* Ajustado para centralizar e focar nos botões sociais abaixo da logo */
     .hero {
         display: flex;
         justify-content: center;
         align-items: center;
         max-width: 1100px;
         margin: 20px auto;
-        padding: 0;
+        padding: 0 10px;
     }
 
     .hero-buttons {
         display: flex;
         gap: 15px;
-        margin-bottom: 0; /* Removido margem desnecessária pós-reestruturação */
+        margin-bottom: 0;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     /* ==========================================================================
@@ -85,12 +85,13 @@
     .btn {
         background: #51a7aa;
         display: inline-block;
-        padding: 20px 100px;
+        padding: 15px 40px; /* Ajustado padding exagerado de 100px para caber na tela */
         color: #2b294d;
         border-radius: 50px;
         font-weight: 600;
         transition: 0.3s;
         cursor: pointer;
+        text-align: center;
     }
 
     .btn:hover {
@@ -100,7 +101,7 @@
 
     .btn-outline {
         background: transparent;
-        border: 10px solid #d2fa9d; 
+        border: 4px solid #d2fa9d; /* Ajustada borda de 10px que estourava o botão no celular */
         color: #084eb8;
         display: inline-flex;
         align-items: center;
@@ -135,17 +136,14 @@
     .menu-grid {
         position: relative;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 30px;
         max-width: 1250px;
         margin: 0px auto;
-        padding: 50px 30px;
+        padding: 50px 20px;
         z-index: 1;
-           
-        
     }
 
-    /* Filtro esbranquiçado transparente sobre a imagem de fundo */
     .menu-grid::before {
         content: "";
         position: absolute;
@@ -153,7 +151,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 255, 255, 0.85); /* 85% de opacidade para suavizar a foto */
+        background-color: rgba(255, 255, 255, 0.85);
         z-index: -1; 
     }
 
@@ -168,7 +166,7 @@
 
     .menu-grid li img {
         width: 100%;
-        height: 410px;
+        height: 300px;
         object-fit: cover;
     }
 
@@ -206,8 +204,8 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        gap: 100px;
-        padding: 15px 1%;
+        gap: 50px;
+        padding: 40px 5%;
         background-color: var(--light);
     }
 
@@ -217,16 +215,13 @@
     }
 
     .sobre h2 {
-        font-size: 50px;
+        font-size: 40px;
         margin-bottom: 20px;
-       
     }
-
-   
 
     .sobre article {
         color: var(--gray);
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     .sobre ul {
@@ -236,7 +231,7 @@
     }
 
     .cta {
-        padding: 10px 10%;
+        padding: 20px 10%;
         text-align: center;
         background: #51a7aa; 
         color: #b2ff35;
@@ -245,7 +240,7 @@
     footer {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 60px;
+        gap: 30px;
         padding: 60px 5% 20px;
         background: var(--dark);
         color: #fff;
@@ -256,7 +251,6 @@
         text-align: center;
     }
 
-    /* Mantendo os seletores antigos caso use futuramente */
     .logo { font-size: 70px; font-weight: 500; }
     .hero h1 { font-size: 60px; line-height: 1.0; margin-bottom: 20px; }
     .hero p { font-size: 40px; color: #03ff6c; margin-bottom: 10px; }
@@ -268,3 +262,38 @@
     .plano2 h2 { font-size: 36px; margin-bottom: 50px; }
     .plano3 p { font-size: 36px; margin-bottom: 50px; }
     .badge { position: absolute; top: 15px; left: 15px; background-color: var(--primary); color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+
+    /* ==========================================================================
+    REGRAS DE RESPONSIVIDADE PARA CELULAR (ADICIONADAS)
+    ========================================================================== */
+    @media (max-width: 768px) {
+        /* Empilha os botões do topo no celular */
+        .hero-buttons {
+            flex-direction: column;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .btn {
+            padding: 15px 20px;
+            width: 100%;
+        }
+
+        /* Faz a seção SOBRE virar 1 coluna só (foto acima, texto abaixo) */
+        .sobre {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .sobre h2 {
+            font-size: 30px;
+        }
+
+        /* Faz o FOOTER virar 1 coluna só */
+        footer {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 30px;
+        }
+    }
