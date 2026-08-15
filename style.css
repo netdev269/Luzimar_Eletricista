@@ -165,7 +165,7 @@
     }
 
     .menu-grid li img {
-        width: 1000%;
+        width: 100%;
         height: 450px;
         object-fit: contain;
         object-fit: cover;
@@ -192,9 +192,12 @@
 
     .menu-grid .btn {
         display: block;
-        margin: 15px 20px 20px;
-        text-align: center;
-        padding: 10px;
+        width: fit-content;    /* Faz o botão ter o tamanho ideal do texto */
+    max-width: 85%;        /* Limite de segurança */
+    margin: 15px auto 20px; /* Centraliza horizontalmente dentro do card */
+    padding: 12px 25px;    /* Espaçamento interno mais elegante */
+    font-size: 0.95rem;     /* Reduz um pouco a fonte no botão */
+    border-radius: 25px;
     }
 
     /* ==========================================================================
@@ -269,6 +272,15 @@
     ========================================================================== */
     @media (max-width: 768px) {
         /* Empilha os botões do topo no celular */
+
+        .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 30px 15px;
+    }
+
+    .menu-grid li img {
+        height: 180px; /* Deixa a foto ainda mais compacta no celular */
+    }
         .hero-buttons {
             flex-direction: column;
             width: 100%;
